@@ -65,7 +65,7 @@ class ChangePasswordType extends AbstractType
             ])
 
         ;
-        ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -87,7 +87,7 @@ public function getFullCart(){
 public function getTotal()
 
     {
-        $total = 0; #déclaration d'une variable pour calculer une variabe
+        $total = 0; #déclaration d'une variable pour calculer une variable
 
     foreach ($this->getFullCart() as $item){
         $total += $item['product']->getPrice() * $item['quantity'];

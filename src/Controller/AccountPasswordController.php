@@ -46,14 +46,15 @@ class AccountPasswordController extends AbstractController
             #on le set le password à l'utilisateur
             $user->setPassword($password);
 
-
             $this->entityManager->persist($user);
             $this->entityManager->flush();
             $this->addFlash('success', 'Votre mot de passe a bien été mis à jour ');
 
+
         }else{
-            $this->addFlash('success', "Votre mot de passe mot de passe actuel n'est pas le bon");
-        }
+                $this->addFlash('danger', "Votre mot de passe mot de passe actuel n'est pas le bon");
+            }
+
 
         }
         return $this->render('account/password.html.twig', [

@@ -60,6 +60,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
+     * @Assert\Regex("/^\(0\)[0-9]*$")
      */
     private $phone;
 
@@ -86,22 +88,26 @@ class User implements UserInterface
     private $deletedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $address;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $zipcode;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $country;
 

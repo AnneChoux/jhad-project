@@ -6,11 +6,66 @@
 
 {% block title %}Paiement de ma commande - La Boutique Française{% endblock %}
 
-{% block contenu %}
+{% block body %}
 
-    <h2>Mon récapitulatif</h2>
-    <p>Verifier vos informations avant de payer votre commande. </p>
-    <hr>
+    <div class="container w-75">
+        <h3 class="mt-4">Mon récapitulatif</h3>
+
+        <p>Verifier vos informations avant de payer votre commande. </p>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <strong>Mon adresse de livraison</strong></br>
+
+                <div class="card mt-4">
+                        <div class="card-body ">
+                            <h5 class="card-title">{{order.user.Lastname}} {{order.user.firstname}}</h5>
+                            <span class="d-block"><small>Telephone : </small>{{order.user.phone}}</span>
+                            <span class="d-block"><small>Adresse : </small>{{order.user.address}}</span>
+                            <span class="d-block"><small>Code postal : </small>{{order.user.zipcode}}</span>
+                            <span class="d-block"><small>Ville : </small>{{order.user.city}}</span>
+                            <span class="d-block"><small>Pays : </small>{{order.user.country}}</span>
+                        </div>
+                    </div>
+
+                <hr>
+
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <b>Ma commande</b><br>
+                </div>
+                <div class="order-summary">
+                    {% set total = null  %}
+                    {% for key, product in cart%}
+                        <div class="row {% if key > 0 %}mt-2{% endif %}">
+                            <div class="col-2">
+                                <img src="uploads/images/product/{{product.product.image}}" alt="{{product.product.name}}" height="75px"><br>
+                            </div>
+                            <div class="col-8 my-auto">
+                                {{ product.product.name }}<br>
+                                <small>
+                                    x {{ product.quantity }}
+                                </small>
+                            </div>
+                            <div class="col-2 my-auto">
+                                {{((product.product.price * product.quantity)/100)|number_format(2, ',', '.')}}€
+                            </div>
+                        </div>
+                        {% set total = total + (product.product.price * product.quantity)  %}
+                    {% endfor%}
+                </div>
+                <hr>
+                <strong>Total : </strong>{{ (total/100)|number_format(2, ',', '.')}} €<br>
+
+                <a class="btn btn-info btn-block mt-2" id="checkout-button">Payer | {{ (total/100)|number_format(2, ',', '.')}} €</a>
+            </div>
+        </div>
+    </div>
+
+
 
 
 {% endblock %}

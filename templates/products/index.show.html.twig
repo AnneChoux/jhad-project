@@ -4,26 +4,32 @@
 
 {% block body %}
 
+<div class="container w-75">
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-5 my-auto">
             <img src="/uploads/images/product/{{product.image}}" alt="{{ product.name}}" class="img-fluid">
         </div>
         <div class="col-md-7">
-            <h3>{{product.name}}</h3>
+            <h4>{{product.name}}</h4>
             <span class="product-page-price">{{ (product.price/100)}} €</span>
             <hr>
             <p>{{product.description}}</p>
-            <p>{{product.stock}}</p>
+
             {% if product.stock > 10 %}
-               En stock
-            {% elseif product.stock > 0 %}
-                Seulement {{ product.stock }} restant
+                <p class="d-block"><small>En stock</small></p>
+            {% elseif product.stock == 0 %}
+                <p class="d-block"><small>Stock epuisé</small></p>
             {% else %}
-            Stock epuisé
+                <p class="d-block"><small>Seulement {{ product.stock }} produit restant</small></p>
             {% endif %}
+            {% if product.stock == 0 %}
+            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-primary disabled">Ajouter au panier</a>
+            {% else%}
             <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+            {% endif %}
             <a href="{{ path('home_boutique') }}">Retour aux produits</a>
         </div>
     </div>
+</div>
 {% endblock %}

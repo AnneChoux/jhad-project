@@ -67,12 +67,12 @@ class OrderDetails
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(string $product): self
+    public function setProduct($product): self
     {
         $this->product = $product;
 
