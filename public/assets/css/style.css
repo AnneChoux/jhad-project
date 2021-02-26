@@ -17,3 +17,69 @@
 .account-item img{
     width: 35px;
 }
+
+/*
+Footer Anne
+ */
+h1{
+    text-align: center;
+    font-family: 'Akaya Telivigala', cursive;
+}
+.conteneur
+{
+    width : 90%;
+    margin : 0 auto;
+    display: flex;
+}
+.img1, .img2, .img3
+{
+    height: 200px;
+    width: 150px;
+    margin: 0 auto;
+}
+.container
+{
+    border: 1px solid lightpink;
+    width: 90%;
+    margin: 0 auto;
+    display : flex;
+    justify-content: space-between;
+}
+
+.Footer
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    border: 1px solid grey;
+    max-width: 180px;
+    min-height: 220px;
+    text-align: center;
+    margin: 1%;
+    line-height: 50px;
+}
+.footer1,.footer2,.footer3
+{
+    flex:auto;
+}
+ul
+{
+    font-size: 15px;
+    text-align: justify;
+}
+.container2
+{
+    border: 1px solid lightpink;
+    max-width: 90%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    height: 20px;
+}
+.footer4
+{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 15px;
+}
+
+
