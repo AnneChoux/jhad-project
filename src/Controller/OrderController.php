@@ -7,17 +7,19 @@ use App\Entity\OrderDetails;
 use App\Service\Cart\CartServices;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ObjectManager;
 
 class OrderController extends AbstractController
 {
 
-    #[Route('/commande', name: 'order')]
+    /**
+     * page commande
+     * @Route("/commande", name="order", methods={"GET"})
+     */
 
     public function index(CartServices $cartServices)
     {
-
         $date = new \DateTime();
-
 
         $order = new Order();
         $reference = $date->format('dmy');
@@ -25,10 +27,16 @@ class OrderController extends AbstractController
         $order->setStatus(0);
         $order->setAmount($cartServices->getTotal());
         $order->setCreatedAt($date);
-        $order->setUser($this->getUser());#l'utilisateur en cours
+        $order->setUser($this->getUser());
+
+        #l'utilisateur en cours
 
         $em =$this->getDoctrine()->getManager();
-        $em->persist($order);
+
+           $orders =$this->getDoctrine()
+           ->getRepository(Order::class)
+           ->findAll();
+            $em->persist($order);
 
 
         //Enregistrer mes produits OrderDetails()
@@ -39,17 +47,20 @@ class OrderController extends AbstractController
             $orderDetails = new OrderDetails();
             $orderDetails->setUserOrder($order);
             $orderDetails->setQuantity($product['quantity']);
-            $orderDetails->setProduct($product['product']->getPrice());
+            $orderDetails->setProduct($product['product']);
 
-            dd($orderDetails);
+            //dd($orderDetails);
             $em =$this->getDoctrine()->getManager();
             $em->persist($orderDetails);
         }
 
-        
+
 
         $em->flush();
 
-        return $this->render('order/index.html.twig');
+        return $this->render('order/index.html.twig', [
+            'orders'=>$orders,
+            'products'=>$product
+        ]);
     }
 }

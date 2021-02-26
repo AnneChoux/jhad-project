@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #calendrier {
+            margin: 20px auto;
+            width: 80%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+            <div id="calendrier"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let calendarElement = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElement, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek',
+                },
+                events: {{ data|raw }},
+                editable: true,
+                eventResizableFromStart: true,
+                slotDuration: '1:00',
+                defaultView: 'agendaWeek',
+                selectable:true,
+                selectHelper: true,
+                eventLimit: true,
+                slotEventOverlap: false,
+                eventOverlap: false,
+                minTime: '9:00:00',
+                maxTime:'19:00:00',
+                allDaySlot: false
+
+            })
+
+            calendar.on('eventChange', (e) => {
+                //console.log(e)
+                let url = `/api/${e.event.id}/edit`
+                let donnees = {
+                    'title': e.event.title,
+                    'description': e.event.extendedProps.description,
+                    'start': e.event.start,
+                    'end': e.event.end,
+                    'backgroundColor': e.event.backgroundColor,
+                    'borderColor': e.event.borderColor,
+                    'textColor': e.event.textColor,
+                    'allDay': e.event.allDay,
+
+                }
+                //console.log(donnees)
+                let xhr = new XMLHttpRequest
+                xhr.open("PUT", url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            calendar.render()
+        }
+    </script>
+{% endblock %}
+
+
+

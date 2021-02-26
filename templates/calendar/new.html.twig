@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendez-vous{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+
+        <h1>Prendre un rendez-vous</h1>
+        <div class="input-group mb-5">
+    {{ include('calendar/_form.html.twig') }}
+        </div>
+    <a href="{{ path('calendar_index') }}">back to list</a>
+    </div>
+{% endblock %}
