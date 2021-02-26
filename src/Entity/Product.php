@@ -40,7 +40,7 @@ class Product
     private $slug;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $stock;
 

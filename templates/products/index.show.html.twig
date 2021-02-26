@@ -11,18 +11,19 @@
         </div>
         <div class="col-md-7">
             <h3>{{product.name}}</h3>
-            <span class="product-page-price">{{ (product.price)}} €</span>
+            <span class="product-page-price"><span class="title-PageProduct">Prix : </span>{{ (product.price)}} €</span>
             <hr>
-            <p>{{product.description}}</p>
-            <p>{{product.stock}}</p>
+            <p><span class="d-block title-PageProduct">Description du produit :</span> {{product.description}}</p>
+            <p><span class=" d-block title-PageProduct">Prix du produit : </span>{{product.stock}}</p>
             {% if product.stock > 10 %}
-               En stock
+                <small>En stock</small>
             {% elseif product.stock > 0 %}
-                Seulement {{ product.stock }} restant
+            <small> Seulement {{ product.stock }} restant</small>
             {% else %}
-            Stock epuisé
-            {% endif %}
-            <a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+            <small >Stock epuisé</small>
+            {% endif %}<br>
+
+            <h4 style="margin: 10px 0"><a href="{{ path('cart_add', {'id' : product.id}) }}" class="btn btn-primary">Ajouter au panier</a></h4><br>
             <a href="{{ path('home_boutique') }}">Retour aux produits</a>
         </div>
     </div>

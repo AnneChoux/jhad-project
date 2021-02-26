@@ -2,7 +2,7 @@
     <div class="d-flex w-100 align-items-center">
         <a class="navbar-brand" href="{{ path('home') }}">
             <img src="{{ asset('assets/image/logo.jpeg') }}" alt="Logo" class="img-fluid rounded float-start"
-                 width="130" height="124"/>
+                 width="200px"/>
         </a>
 
 
@@ -13,7 +13,7 @@
                 aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse me-auto" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
                     <a class="nav-link " href="{{ path('home_prestation') }}">Nos prestations<span class="sr-only">(current)</span></a>
@@ -30,9 +30,11 @@
                 </li>
 
             </ul>
-            <div class="navbar-item-custom">
+            <div class="navbar-item-custom ms-auto">
                 <form class="form-inline ml-auto p-2">
                     {% if app.user %}
+                        <a class="btn btn-outline-secondary mr-1" href="{{ path('service_calendar') }}">Calendrier</a>
+
                         <a class="btn btn-outline-secondary mr-1"
                            href="{{ path('account') }}">Mon compte
                             <medium>{{ app.user.firstname }}</medium>

@@ -3,19 +3,18 @@
 {% block title %}Notre E-shop | JhadBeauty {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-9">
+    <div class="row ">
+        <div class="col-md-6">
 
-            <h3>Nos prestations</h3>
+            <h3 class="title-PageProduct">Nos prestations</h3>
 
-            <div class="row product-container">
-
+            <div class="row product-container d-flex justify-content-center">
                 {% for product in products %}
-
                     <div class="col-md-4 mt-4">
                         <div class="card">
                             <div class="position-relative">
-                                <a href=""><img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid"
+                                <a href=""><img src="{{ product.image }}" alt="{{ product.name }}"
+                                                class="img-fluid img-thumbnai card-img-tol"
                                                 class="card-img-top"></a>
                                 <div class="card-img-overlay d-flex justify-content-end align-items-end">
                                     <button type="button" class="btn btn-light rounded-circle" data-toggle="button"
@@ -24,11 +23,13 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title"><small>{{ product.name }}</small></h5>
-                                <span class="d-block">{{ (product.time) }} </span>
-                                <span class="d-block">{{ (product.price) }} €</span>
-                                <a href="{{ path('boutique_service', {id : product.id}) }}"
-                                   class="btn btn-warning btn-sm">Lire la suite</a>
+                                <h5 class="card-title"><span class="d-block title-PageProduct">Prestation : </span>{{ product.name }}</h5>
+                                <span class="d-block"><span class="d-block title-PageProduct">Temps : </span>{{ (product.time) }} </span>
+                                <span class="d-block"><span class="d-block title-PageProduct">Prix : </span>{{ (product.price) }} €</span>
+                                <div class="row m-3">
+                                    <a href="{{ path('boutique_service', {id : product.id}) }}"
+                                       class="btn btn-warning btn-sm">Lire la suite</a>
+                                </div>
                             </div>
                         </div>
                     </div>

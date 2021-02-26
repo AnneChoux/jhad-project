@@ -4,34 +4,18 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-9">
-
-            <h3>Nos prestations</h3>
-
-            <div class="row product-container">
-                <div class="col-md-4 mt-4">
-                    <div class="card">
-                        <div class="position-relative">
-                            <a href=""><img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid"
-                                            class="card-img-top"></a>
-                            <div class="card-img-overlay d-flex justify-content-end align-items-end">
-                                <button type="button" class="btn btn-light rounded-circle" data-toggle="button"
-                                        aria-pressed="false" autocomplete="off"><i class="far fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><small>{{ product.name }}</small></h5>
-                            <span class="d-block">{{ (product.description) }}</span>
-                            <span class="d-block">{{ (product.time) }} </span>
-                            <span class="d-block">{{ (product.price) }} €</span>
-                            <a href="{{ path('calendar_new', {id : product.id}) }}"
-                               class="btn btn-primary btn-sm">Reserver</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-5 my-auto">
+            <img src="{{ product.image}}" alt="{{ product.name}}" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+            <h3>{{product.name}}</h3>
+            <span class="product-page-price"><span class="title-PageProduct">Prix : </span>{{ (product.price)}} €</span>
+            <hr>
+            <p><span class="d-block title-PageProduct">Description de la prestation :</span> {{product.description}}</p>
+            <p><span class=" d-block title-PageProduct">Temps : </span>{{product.time}}</p>
+            <h4>    <a href="{{ path('calendar_new', {id : product.id}) }}"
+                       class="btn btn-primary btn-sm">Reserver</a></h4><br>
+            <a href="{{ path('home_prestation') }}">Retour aux produits</a>
         </div>
     </div>
-
 {% endblock %}

@@ -1,3 +1,7 @@
+body{
+    background-color: #FAFAFA;
+}
+
 .account-item{
     background-color: #d1d8e0;
     padding: 40px;
@@ -19,9 +23,6 @@
 }
 
 /**NAV BAR - LANDING PAGE DALLA*/
-body {
-    background-color: black;
-}
 
 header {
     width: 100vw;
@@ -29,7 +30,7 @@ header {
 }
 
 .navbar .navbar-nav .nav-link {
-    color: #000000;
+    color: grey;
     font-size: 1.1em;
 }
 
@@ -58,4 +59,8 @@ header {
 
 .btn-compte-nav-prenom{
     font-size: 12px;
+}
+
+.title-PageProduct{
+    color: grey;
 }
