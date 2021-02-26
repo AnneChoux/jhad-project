@@ -19,9 +19,10 @@
 }
 
 /*
-Footer Anne
+Footer Anne version 2
  */
-h1{
+
+.galerie {
     text-align: center;
     font-family: 'Akaya Telivigala', cursive;
 }
@@ -73,13 +74,16 @@ ul
     margin: 0 auto;
     display:flex;
     justify-content: center;
-    height: 20px;
+    height: 40px;
 }
 .footer4
 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 15px;
+    color:dimgrey;
 }
 
-
+.res, .pol, .cgu{
+    text-align: justify;
+}
