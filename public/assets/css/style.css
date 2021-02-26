@@ -42,16 +42,6 @@ header {
     margin-top: 0.5em;
 }
 
-/* LARGE SCREENS */
-@media only screen and (min-width: 960px) {
-    .navbar {
-        flex-direction: column; /* horizontal navbar */
-    }
-    .navbar .nav-item {
-        padding: 0.5em 1em;
-    }
-}
-
 .img-profil{
     width: 80px;
     height: 100px;
@@ -63,4 +53,15 @@ header {
 
 .title-PageProduct{
     color: grey;
+}
+
+
+/* LARGE SCREENS */
+@media only screen and (min-width: 960px) {
+    .navbar {
+        flex-direction: column; /* horizontal navbar */
+    }
+    .navbar .nav-item {
+        padding: 0.5em 1em;
+    }
 }

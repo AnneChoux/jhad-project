@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Calendar;
+use App\Entity\Category;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,7 +39,7 @@ class CalendarController extends AbstractController
 
         return $this->render('calendar/new.html.twig', [
             'calendar' => $calendar,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
