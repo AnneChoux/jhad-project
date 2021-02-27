@@ -38,6 +38,7 @@ class CartServices
 public function remove($id)
 {
     $panier= $this->session->get('panier', []);
+
     if(!empty($panier[$id])){#s'il existe
 
         unset($panier[$id]);

@@ -83,7 +83,7 @@ class RegisterType extends AbstractType
                     'placeholder'=>'Entrer votre téléphone'
                 ]
             ] )
-            ->add('image',FileType::class, array('data_class' => null),[
+            ->add('image',FileType::class,[
                 'label'=>"Votre image de profil",
                 'required'=>false
             ])

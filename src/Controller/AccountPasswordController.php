@@ -18,7 +18,9 @@ class AccountPasswordController extends AbstractController
 
     }
 
-    #[Route('/compte/modifier-mot-de-passe', name: 'account_password')]
+    /**
+     * @Route("/compte/modifier-mot-de-passe", name="account_password", methods={"GET|POST"})
+     */
 
 
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
@@ -29,6 +31,7 @@ class AccountPasswordController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
 
             /*Modifier le mot de passe*/
             /*Methode pour comparer le mot de passe actuel et le mot de passe en bdd => on utilise userPasswordEncoderInterface que je stocke dans $encoder*/

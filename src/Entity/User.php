@@ -36,13 +36,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *
+     * @Assert\Length(min=8, minMessage="Le mot de passe doit faire 8 caracteres minimum")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=80)
-     *@Assert\NotBlank(message="ce champ est obligatoire")
+     * @Assert\NotBlank(message="ce champ est obligatoire")
+     *
      */
     private $lastname;
 
@@ -61,7 +62,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Ce champ est obligatoire")
-     * @Assert\Regex("/^\(0\)[0-9]*$")
+     *
      */
     private $phone;
 

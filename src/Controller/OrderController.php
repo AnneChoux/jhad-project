@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Service\Cart\CartServices;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,6 +40,7 @@ class OrderController extends AbstractController
             //pour chaque produit du va iterer
 
 
+
             foreach ($cartServices->getFullCart() as $item)#Sur tout le panier qu'on récupère
             {
                 $orderDetails = new OrderDetails();
@@ -47,20 +50,18 @@ class OrderController extends AbstractController
 
                 $em =$this->getDoctrine()->getManager();
                 $em->persist($orderDetails);
-            }
 
+            }
 
             $em->flush();
 
             return $this->render('order/index.html.twig', [
                 'cart'=>$cartServices->getFullCart(),
-                'order'=>$order
+                'order'=>$order,
+                'reference'=>$order->getReference()#On passe la variable réference pour pouvoir y avoir accés et l'utiliser dans la recherche de la commande liée au paiement
             ]);
+
+
         }
-
-
-
-
-
 
 }

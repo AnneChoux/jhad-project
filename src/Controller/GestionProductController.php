@@ -47,12 +47,8 @@ class GestionProductController extends AbstractController
         $items->remove($id);
         $items->flush();
 
-        $this->redirectToRoute('home_boutique');
+       return $this->redirectToRoute('gestion_product');
 
-        return $this->render('gestionproduct/index.allproduct.html.twig',[
-                'id'=>$id,
-                'items'=>$items
-        ]);
     }
 
 
@@ -65,11 +61,11 @@ class GestionProductController extends AbstractController
     public function create(Request $request, SluggerInterface $slugger)
 
     {
-        #Creation d'un nouvel article vide
+        #Creation d'un nouvel produit vide
         $product = new Product();
         $product->setCreatedAt(new \DateTime());
 
-        #remplacer par l'itulisateur actuel
+        #remplacer par l'itulisateur actuel(ici, l'admin)
         $product->setUser($this->getUser());#l"utilisateur qui est connecté
 
 
@@ -133,9 +129,8 @@ class GestionProductController extends AbstractController
 
 }
     /**
-     * @return
      *
-     * @Route("/nos-produits/modification/{id}", name="gestion_modification_produit")
+     * @Route("/nos-produits/modification/{id}", name="gestion_modification_produit", methods={"GET|POST"})
      */
     public function modification(Request $request, Product $product, SluggerInterface $slugger){
 
@@ -145,6 +140,7 @@ class GestionProductController extends AbstractController
 
         //si le formulaire à été soumis et est valide
         if($form->isSubmitted() && $form->isValid()){
+
             //enregistrement du produit dans la bdd
             /** @var UploadedFile $image */
             $image = $form->get('image')->getData();
@@ -198,27 +194,6 @@ class GestionProductController extends AbstractController
             'form'=>$formView
         ]);
 
-    }
-
-    /**
-     * @Route("nos-produits/supprimer/{id}", name="suppression_produit")
-     *
-     * @return
-     */
-    public function suppression(Product $produit)
-    {
-
-        // recuperation de l'entity manager
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($produit);
-        $em->flush();
-
-        $this->addFlash('success', 'Le produit a été supprimé');
-
-
-        $this->redirectToRoute('gestion_product');
-
-        return $this->render('gestionproduct/index.allproduct.html.twig');
     }
 
 
