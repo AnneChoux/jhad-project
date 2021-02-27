@@ -18,11 +18,6 @@ class Calendar
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $title;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $start;
@@ -62,22 +57,17 @@ class Calendar
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="calendars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
 
     public function getStart(): ?\DateTimeInterface
     {
@@ -171,6 +161,18 @@ class Calendar
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

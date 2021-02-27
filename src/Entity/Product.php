@@ -60,7 +60,7 @@ class Product
     private $deletedAt;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="time", nullable=true)
      */
     private $time;
 
@@ -86,9 +86,15 @@ class Product
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Calendar::class, mappedBy="product")
+     */
+    private $calendars;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+        $this->calendars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,12 +198,12 @@ class Product
         return $this;
     }
 
-    public function getTime(): ?string
+    public function getTime()
     {
         return $this->time;
     }
 
-    public function setTime(?string $time): self
+    public function setTime( $time): self
     {
         $this->time = $time;
 
@@ -267,6 +273,36 @@ class Product
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Calendar[]
+     */
+    public function getCalendars(): Collection
+    {
+        return $this->calendars;
+    }
+
+    public function addCalendar(Calendar $calendar): self
+    {
+        if (!$this->calendars->contains($calendar)) {
+            $this->calendars[] = $calendar;
+            $calendar->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCalendar(Calendar $calendar): self
+    {
+        if ($this->calendars->removeElement($calendar)) {
+            // set the owning side to null (unless already changed)
+            if ($calendar->getProduct() === $this) {
+                $calendar->setProduct(null);
+            }
+        }
 
         return $this;
     }
