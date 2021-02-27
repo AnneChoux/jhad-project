@@ -22,22 +22,7 @@
 Footer Anne version 2
  */
 
-.galerie {
-    text-align: center;
-    font-family: 'Akaya Telivigala', cursive;
-}
-.conteneur
-{
-    width : 90%;
-    margin : 0 auto;
-    display: flex;
-}
-.img1, .img2, .img3
-{
-    height: 200px;
-    width: 150px;
-    margin: 0 auto;
-}
+
 .container
 {
     border: 1px solid lightpink;
@@ -87,3 +72,35 @@ ul
 .res, .pol, .cgu{
     text-align: justify;
 }
+/*
+galerie Anne
+ */
+
+.galerie {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.img7, .imgart1,.imgart5, .imgart2, .imgart4, .img6 {
+    height: 160px;
+    width: 250px;}
+.img7{
+    border: 2px solid black;
+}
+.imgart1{
+    border: 2px solid darkred;
+}
+.imgart5{
+    border: 2px solid darkorange;
+}
+.imgart2{
+    border: 2px solid lightgreen;
+}
+.imgart4{
+    border: 2px solid lightgrey;
+}
+.img6{
+    border: 2px solid beige;
+}
+
+
+
