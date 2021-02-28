@@ -24,11 +24,10 @@
                           <div class="card-body">
                             <h5 class="card-title"><small>{{product.name}}</small></h5>
                               <span class="d-block">{{ (product.price)}} €</span>
-                             <a href="{{ path('boutique_product', {id : product.id}) }}" class="btn btn-secondary btn-sm">Voir le produit</a>
+                             <a href="{{ path('boutique_product', {id : product.id}) }}" class="btn btn-outline-secondary  mt-3 ">Voir le produit</a>
                         </div>
                       </div>
                     </div>
-
                     {% endfor %}
                 </div>
             </div>

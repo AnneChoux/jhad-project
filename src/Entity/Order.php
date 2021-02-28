@@ -51,6 +51,11 @@ class Order
      */
     private $details;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stripeSessionId;
+
 
     public function __construct()
     {
@@ -150,6 +155,18 @@ class Order
                 $detail->setUserOrder(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(?string $stripeSessionId): self
+    {
+        $this->stripeSessionId = $stripeSessionId;
 
         return $this;
     }

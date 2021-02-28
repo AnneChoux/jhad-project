@@ -28,7 +28,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name'),
             SlugField::new('slug')->setTargetFieldName('name'),
             ImageField::new('image')
-                ->setBasePath('uploads/')# ou l'on veut mettrre les fichiers
+                ->setBasePath('uploads/images/product')# ou l'on veut mettrre les fichiers
                 ->setUploadDir('public/uploads/images/product')#mettre le chemin complet
                 ->setUploadedFileNamePattern('[randomhash].[extension]')# la maniere qu'on veut encoder le nom de l'image
                 ->setRequired(false),

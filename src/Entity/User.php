@@ -128,6 +128,7 @@ class User implements UserInterface
         $this->products = new ArrayCollection();
     }
 
+
     public function __toString()
     {
         return $this->getId();

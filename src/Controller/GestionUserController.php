@@ -32,7 +32,6 @@ class GestionUserController extends AbstractController
     /**
      * @Route("utilisateurs/supprimer/{id}", name="suppression_user", methods={"GET|POST"})
      *
-     * @return
      */
     public function suppression(User $user)
     {
@@ -42,11 +41,10 @@ class GestionUserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        $this->addFlash('sucess', "Le l'utilisateur a été supprimé");
+        $this->addFlash('success', " l'utilisateur a été supprimé");
 
-        $this->redirectToRoute('gestion_user');
+        return $this->redirectToRoute('gestion_user');
 
-        return $this->render('gestionuser/index.html.twig');
     }
 
 

@@ -13,11 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
-
     /**
      * @Route("/commande", name="order", methods={"GET|POST"})
-     *
      */
+
     public function index(CartServices $cartServices)
     {
 

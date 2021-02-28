@@ -59,8 +59,8 @@
                 </div>
                 <hr>
                 <strong>Total : </strong>{{ (total)|number_format(2, ',', '.')}} €<br>
-
-                <a class="btn btn-info btn-block mt-2" id="checkout-button">Payer | {{ (total)|number_format(2, ',', '.')}} €</a>
+                <small>* Paiement par carte bancaire</small>
+                <a class="btn btn-outline-secondary btn-block mt-2" id="checkout-button">Payer | {{ (total)|number_format(2, ',', '.')}} €</a>
             </div>
         </div>
     </div>

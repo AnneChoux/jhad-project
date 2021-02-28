@@ -46,15 +46,20 @@ class StripeController extends AbstractController
         Stripe::setApiKey('sk_test_51IP7GQE2WWDKXNMo2nFwZtQqT4xJbN8cFfMnsFpI12bJMV3E0A3EmExDWlUSwGvrMcob7mWFXDXgarK5yis6J7Mc00f9FnkpUG');
 
         $checkout_session = Session::create([
-
+            'customer_email'=>$this->getUser()->getEmail(),
             'payment_method_types' => ['card'],
             'line_items' => [[
                 $products_stripe
             ]],
             'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN . '/commande/merci',
-            'cancel_url' => $YOUR_DOMAIN . '/commande/erreur',
+            'success_url' => $YOUR_DOMAIN . '/commande/merci/{CHECKOUT_SESSION_ID}',
+            'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
         ]);
+
+        $order->SetStripeSessionId($checkout_session->id);#On crée une variable qui va nous permettre de récupérér les indos de la commande payée via stripe
+        #il faut envoyer l'information dans la base de données
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
 
      $response = new JsonResponse(['id' => $checkout_session->id]);
      return $response;

@@ -55,9 +55,6 @@ class GestionProductController extends AbstractController
     /**
      * @Route("/nos-produits/creation-produit", name="gestion_create_product", methods={"GET|POST"})
      */
-
-
-
     public function create(Request $request, SluggerInterface $slugger)
 
     {

@@ -35,12 +35,12 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("panier/remove/{id}", name="cart_remove", methods={"GET|POST"})
+     * @Route("panier/delete/{id}", name="cart_delete", methods={"GET|POST"})
      *
      */
-    public function remove($id, CartServices $cartServices)
+    public function delete($id, CartServices $cartServices)
     {
-        $cartServices->remove($id);
+        $cartServices->delete($id);
 
         return $this->redirectToRoute('cart_index');
     }
