@@ -3,29 +3,23 @@
 {% block title %}Mon mailer - JHADBoutique{% endblock %}
 
 {% block body %}
-    <table class="table">
-        <tbody>
-
-            <tr>
-                <td>  prenom     </td>
-                <td>{{contact.firstname}}</td>
-
-                <td>  nom     </td>
-                <td>{{contact.lastname}}</td>
-
-                <td>  email     </td>
-                <td>{{contact.email}}</td>
-
-{#                <td>  telephone     </td>#}
-{#                <td>{{contact.phone}}</td>#}
-
-                <td>  message     </td>
-                <td>{{contact.message | raw}}</td>
-
-
-            </tr>
-
-        </tbody>
+    <table class="table" border="0" cellpadding="0" width="100%" >
+        <tr>
+            <td> prenom</td>
+            <td>{{ contact.firstname }}</td>
+            <br>
+            <td> nom</td>
+            <td>{{ contact.lastname }}</td>
+            <br>
+            <td> email</td>
+            <td>{{ contact.email }}</td>
+            <br>
+            <td> telephone</td>
+            <td>{{ contact.phone }}</td>
+            <br>
+            <td> message</td>
+            <td>{{ contact.message | raw }}</td>
+        </tr>
     </table>
 
 {% endblock %}

@@ -22,14 +22,11 @@ class Contact
      */
     private $firstname;
 
-//    /**
-//     * @var string|null
-//     * @Assert\NotBlank()
-//     * @Assert\Regex(
-//     *  pattern="/[0-9]"{10}/"
-//     * )
-//     */
-//    private $phone;
+    /**
+    * @var string|null
+    * @Assert\NotBlank()
+    */
+   private $phone;
 
     /**
      * @var string|null
@@ -91,8 +88,8 @@ class Contact
     }
 
     /**
-     * @return string|null
-     *
+     * @param string|null $phone
+     * @return Contact
      */
     public function setPhone(?string $phone): Contact
     {

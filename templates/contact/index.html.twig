@@ -8,9 +8,18 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
+<div class="container">
     <h1>Contact Form</h1>
-
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
+    {% if not form.vars.valid %}
+    <div class="alert alert-danger">
+        Attention erreur
+    </div>
+    {% endif %}
 <div id="contactForm" class="mt-4">
     {{ form_start(form) }}
         <div class="row">
@@ -18,7 +27,7 @@
             <div class="col">{{ form_row(form.lastname) }}</div>
         </div>
     <div class="row">
-{#        <div class="col">{{ form_row(form.phone) }}</div>#}
+        <div class="col">{{ form_row(form.phone) }}</div>
         <div class="col">{{ form_row(form.email) }}</div>
     </div>
         {{ form_rest(form) }}

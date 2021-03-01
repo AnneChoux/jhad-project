@@ -12,17 +12,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact')]
+
+    /**
+     * @Route("/contact", name="post_contact", methods={"GET|POST"})
+     */
     public function index(Request $request, ContactNotification $notification): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class,$contact);
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $notification->notify($contact);
             $this->addFlash('success', 'votre email a bien ete envoyé');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('post_contact');
         }
 
         return $this->render('contact/index.html.twig', [

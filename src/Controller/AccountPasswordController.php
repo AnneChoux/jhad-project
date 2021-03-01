@@ -18,8 +18,10 @@ class AccountPasswordController extends AbstractController
 
     }
 
-    #[Route('/compte/modifier-mot-de-passe', name: 'account_password')]
 
+    /**
+     * @Route("/compte/modifier-mot-de-passe", name="account_password", methods={"GET"})
+     */
 
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
