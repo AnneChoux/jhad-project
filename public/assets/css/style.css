@@ -54,6 +54,10 @@ header {
 .title-PageProduct{
     color: grey;
 }
+.contactSubTitle{
+    font-size: 16px;
+    font-weight: 900;
+}
 
 
 /* LARGE SCREENS */

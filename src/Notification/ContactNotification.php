@@ -34,4 +34,14 @@ class ContactNotification
             ]), 'text/html');
         $this->mailer->send($message);
     }
+
+    public function sendResponse()
+    {
+        $message = (new \Swift_Message('Mail de confirmation'))
+            ->setFrom('test@resa.com')
+            ->setTo('contact@contact.fr')
+            ->setBody($this->renderer->render('email/validateEmail.html.twig', [
+            ]), 'text/html');
+        $this->mailer->send($message);
+    }
 }

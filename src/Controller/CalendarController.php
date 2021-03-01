@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Calendar;
 use App\Form\CalendarType;
+use App\Notification\ContactNotification;
 use App\Repository\CalendarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/new", name="calendar_new", methods={"GET|POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,  ContactNotification $notification): Response
     {
         $calendar = new Calendar();
         $form = $this->createForm(CalendarType::class, $calendar);
@@ -35,6 +36,8 @@ class CalendarController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($calendar);
             $entityManager->flush();
+            
+            $notification->sendResponse();
 
             return $this->redirectToRoute('calendar_index');
         }

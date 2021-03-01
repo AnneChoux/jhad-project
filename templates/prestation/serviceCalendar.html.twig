@@ -12,9 +12,11 @@
 
 {% block body %}
     <div class="row">
-<div class="d-flex justify-content-center m-3">
-            <a  href="{{ path('calendar_new') }}"> <button class="btn btn-primary">Ajouter une réservation   </button></a>
-</div>
+        <div class="d-flex justify-content-center mx-auto">
+            <a href="{{ path('calendar_new') }}">
+                <button class="btn btn-primary">Ajouter une réservation</button>
+            </a>
+        </div>
     </div>
     <div class="row">
         <div id="calendrier"></div>
@@ -39,7 +41,7 @@
                     end: 'dayGridMonth,timeGridWeek',
                 },
                 buisnessHours: {
-                    daysOfWeek: [1,2,3,4,5],
+                    daysOfWeek: [1, 2, 3, 4, 5],
                     startTime: '10;00',
                     endTime: '19:00'
                 },
